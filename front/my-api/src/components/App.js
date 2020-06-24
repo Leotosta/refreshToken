@@ -1,11 +1,10 @@
-import React, { useEffect, useState, useContext} from 'react'
+import React, { useEffect, useState} from 'react'
 import { setToken, getToken } from '../storage'
 import Context from '../stores/store'
 
 function App() {
-    var acess = ''
     const [loading, setLoading] = useState(true)
-    const {auth, setAuth} = useContext(Context)
+    // const {auth, setAuth} = useContext(Context)
 
     useEffect(() => {
         

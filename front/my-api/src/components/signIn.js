@@ -9,38 +9,38 @@ import { setToken } from '../storage'
 function SignIn() {
     
     const { register, handleSubmit } = useForm()
-    const { auth, setAuth } = useContext(Context)
 
 
-    const onSubmit = async useCallback(dados){
-        try{
+   async function onSubmit(dados){
+       try{
+          
+           const {data: {token}} = await api.post('/SignIn', dados)
            
-            const {data: {token}} = await api.post('/SignIn', dados)
-            
-            if(!token)
-                return new Error('Invalid section!')
-            
-            setToken(token)
+           if(!token)
+               return new Error('Invalid section!')
+           
+           setToken(token)
 
-            history.push('/refreshToken')
+           history.push('/refreshToken')
 
-        }catch(e){
-            if(e.response)
-                console.log(e.response.data)
-        }
-    }
+       }catch(e){
+           if(e.response)
+               console.log(e.response.data)
+       }
+
+   }
   
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <div>
                 <label> Username </label>
-                <input type="text" defaultValue="leotosta11" name="username" ref={register} />
+                <input type="text"  name="username" ref={register} />
             </div>
 
             <div>
                 <label> Password </label>
-                <input type="password" defaultValue="123456" name="password" ref={register} />
+                <input type="password"  name="password" ref={register} />
             </div>
 
             <button > Submit </button>

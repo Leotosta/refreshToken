@@ -10,16 +10,14 @@ let instance = axios.create({
      
 })
 
-instance.interceptors.request.use(config => {
-  console.log(config)
- console.log(getToken())
+// instance.interceptors.request.use(config => {
 
- config.headers.authorization = `bearer ${getToken()}`
+//  config.headers.authorization = `bearer ${getToken()}`
 
-  return config
-}, err => {
-  console.log(err)
-  return Promise.reject(err)
-})
+//   return config
+// }, err => {
+//   console.log(err)
+//   return Promise.reject(err)
+// })
 
 export default instance
