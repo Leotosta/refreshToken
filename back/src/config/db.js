@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 
-mongoose.connect(process.env.MONGO , {
+mongoose.connect('mongodb://localhost/fifinha' , {
     useFindAndModify: true,
     useNewUrlParser: true,
     useUnifiedTopology: true

@@ -1,51 +1,39 @@
-import React, { useEffect, useState} from 'react'
-import { setToken, getToken } from '../storage'
-import Context from '../stores/store'
+// import React, { useEffect, useState}  from 'react'
+// import { Link } from 'react-router-dom'
+// import callPost from '../services/apiDefault'
 
-function App() {
-    const [loading, setLoading] = useState(true)
-    // const {auth, setAuth} = useContext(Context)
 
-    useEffect(() => {
+// function App() {
+//     const [loading, setLoading] = useState(true)
+
+//     useEffect(() => {
         
-        try{
-              async function fetchData(){     
+//         try{
+//             function fetchData(){     
+//                 callPost()
+//                 setLoading(false)
+//             }
 
-                   await fetch('http://localhost:4000/refreshToken', {
-                        method: 'POST',
-                        headers: {
-                            'content-Type': 'application/json',
-                            'authorization': `bearer ${getToken()}`
-                        },
-                        credentials: 'include'
-                        
-                    }).then(async res => {
-                        const { acessToken } = await res.json()   
+//             fetchData()
 
-                        setToken(acessToken)
-                        setLoading(false)
-                    })
-            }
+//         }catch(e){
+//             console.log(e)
+//             if(e.response)  
+//                 console.log(e.response.data)
+//         }
+//     }, [])
 
-            fetchData()
+//     if(loading){     
+//         return <div>Loading....</div>
+//     }
 
-        }catch(e){
-            console.log(e)
-            if(e.response)  
-                console.log(e.response.data)
-        }
-    }, [])
-
-    if(loading){     
-        return <div>Loading....</div>
-    }
-
-    return (
-        <div>
-            <h2> App</h2>
-        </div>
-    )
+//     return (
+//         <div>
+//             <h2> App</h2>
+//             <Link to="/refreshToken/project"> Go to </Link>
+//         </div>
+//     )
     
-}
+// }
 
-export default App
+// export default App

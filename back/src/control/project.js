@@ -16,13 +16,16 @@ async function revokeToken(user){
 
 }
 
-router.get('/project', authMiddleware, (req, res) => {
+router.get('/refreshToken/project',authMiddleware, async (req, res) => {
+    
+    
+
     return res.json({
         userId: req.userId
     })
 })
 
-router.post('/refreshToken/', authMiddleware, async (req, res) => {
+router.post('/refreshToken', async (req, res) => {
     const token = req.cookies.jid
 
     if(!token)
@@ -37,9 +40,12 @@ router.post('/refreshToken/', authMiddleware, async (req, res) => {
     }
 
     const user = await User.findOne({ id: payload._id })
-    
+
+
+    console.log(user)
+
     if(!user)
-        return res.json({ok: 'user not gounf', accessToken: ''})
+        return res.json({ok: 'user not found', accessToken: ''})
 
     // if(user.tokenVersion !== payload.tokenVersion)
     //     return res.json({ ok: 'not equal', accessToken: '' })

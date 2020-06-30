@@ -4,19 +4,19 @@ import history from './history'
 import SignIn from './components/signIn'
 import App from './components/App'
 import Home from './components/Home'
-import Project from './project'
+import ProjectApp from './components/projectRef'
 
 function Routes(){
     return (   
-        <Project>
             <Router history={history} >
                 <Switch>
                     <Route path="/" exact component={Home}/>
                     <Route path="/SignIn" exact component={SignIn} />
-                    <Route path="/refreshToken" exact component={App}/>
+                    {/* <Route path="/refreshToken" exact component={App}/> */}
+                    <Route path="/refreshToken/project" exact component={ProjectApp}/>
+
                 </Switch>
             </Router>              
-        </Project>
     )
 }
 

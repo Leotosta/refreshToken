@@ -1,10 +1,8 @@
-import React, { useContext, useCallback } from 'react'
+import React from 'react'
 import  {useForm}  from 'react-hook-form'
-import api from '../api'
+import api from '../services/api'
 import history from '../history'
-import Context from '../stores/store'
-import { setToken } from '../storage'
-
+import {getToken, setToken} from '../storage'
 
 function SignIn() {
     
@@ -19,9 +17,9 @@ function SignIn() {
            if(!token)
                return new Error('Invalid section!')
            
-           setToken(token)
+            localStorage.setItem('token', token)
 
-           history.push('/refreshToken')
+           history.push('/refreshToken/project')
 
        }catch(e){
            if(e.response)
@@ -35,12 +33,12 @@ function SignIn() {
         <form onSubmit={handleSubmit(onSubmit)}>
             <div>
                 <label> Username </label>
-                <input type="text"  name="username" ref={register} />
+                <input type="text" defaultValue="leotosta11" name="username" ref={register} />
             </div>
 
             <div>
                 <label> Password </label>
-                <input type="password"  name="password" ref={register} />
+                <input type="password" defaultValue="123456" name="password" ref={register} />
             </div>
 
             <button > Submit </button>

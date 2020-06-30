@@ -3,11 +3,9 @@ const jwt = require('jsonwebtoken')
 module.exports = (req, res, next) => {
     const allValue = req.headers.authorization
     console.log(req.headers)
-    console.log(allValue + ' authMiddleware!')
-
 
     if(!allValue)
-        return res.status(404).json('Nothing has been found')
+        return res.status(401).json('Nothing has been found')
 
     const parts = allValue.split(' ')
     
